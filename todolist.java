@@ -22,10 +22,10 @@ public class TodoList {
                 addTask();
                 break;
             case 2:
-                listTasks();
+                //listTasks();
                 break;
             case 3:
-                deleteTask();
+                //deleteTask();
                 break;
             case 4:
                 System.out.println("Saliendo del gestor de tareas. ¡Hasta luego!");
@@ -42,6 +42,13 @@ public class TodoList {
         System.out.println("3 - Eliminar tarea");
         System.out.println("4 - Salir");
         System.out.print("Elige una opción: ");
+    }
+
+    private static void addTask() {
+        System.out.print("Cual es tu nueva tarea?: ");
+        String task = scanner.nextLine();
+        tasks.add(task);
+        System.out.println("Una más para la saca: " + task);
     }
 
     public static void main(String[] args) {
