@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TodoList {
+public class todoList {
     private static ArrayList<String> tasks = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
@@ -25,7 +25,7 @@ public class TodoList {
                 allTasks();
                 break;
             case 3:
-                //deleteTask();
+                deleteTask();
                 break;
             case 4:
                 System.out.println("Saliendo del gestor de tareas. ¡Hasta luego!");
@@ -54,10 +54,28 @@ public class TodoList {
     private static void allTasks() {
         System.out.println("\n--- Lista de Tareas ---");
         if (tasks.isEmpty()) {
-            System.out.println("No hay tareas por mostrar.");
+            System.out.println(" Aquí No hay tareas.");
         } else {
             for (int i = 0; i < tasks.size(); i++) {
                 System.out.println((i + 1) + ". " + tasks.get(i));
+            }
+        }
+    }
+
+    private static void deleteTask() {
+        allTasks();
+        if (!tasks.isEmpty()) {
+            System.out.print("Introduce el número de la tarea a eliminar: ");
+            try {
+                int select = Integer.parseInt(scanner.nextLine()) - 1;
+                if (select >= 0 && select < tasks.size()) {
+                    String taskOver = tasks.remove(select);
+                    System.out.println("Tarea eliminada: " + taskOver);
+                } else {
+                    System.out.println("Número de tarea no válido.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, introduce un número válido.");
             }
         }
     }
