@@ -6,7 +6,7 @@ public class TodoList {
     private static Scanner scanner = new Scanner(System.in);
 
     
-    private static int getOption() {
+    private static int option() {
         int option = -1;
         try {
             option = Integer.parseInt(scanner.nextLine());
@@ -22,7 +22,7 @@ public class TodoList {
                 addTask();
                 break;
             case 2:
-                //listTasks();
+                allTasks();
                 break;
             case 3:
                 //deleteTask();
@@ -35,7 +35,7 @@ public class TodoList {
         }
     }
 
-    private static void showMenu() {
+    private static void menu() {
         System.out.println("\n Tu Lista de tareas actual! ");
         System.out.println("1 - Nueva tarea");
         System.out.println("2 - Listado de tareas");
@@ -51,11 +51,23 @@ public class TodoList {
         System.out.println("Una más para la saca: " + task);
     }
 
+    private static void allTasks() {
+        System.out.println("\n--- Lista de Tareas ---");
+        if (tasks.isEmpty()) {
+            System.out.println("No hay tareas por mostrar.");
+        } else {
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println((i + 1) + ". " + tasks.get(i));
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         int option;
         do {
-            showMenu();
-            option = getOption();
+            menu();
+            option = option();
             handleOption(option);
         } while (option != 4);
     }
